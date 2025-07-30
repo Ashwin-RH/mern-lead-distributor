@@ -28,7 +28,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 // ✅ Home route
 app.get('/', (req, res) => {
-  res.send('Azyn is running...');
+  res.send("🤖 Hello, human. Azyn is online and distributing leads with precision and zero coffee.");
 });
 
 // ✅ Start server
