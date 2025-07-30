@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { Lock, User } from "lucide-react";
 
 const API = import.meta.env.VITE_API_URL;
+console.log("🌐 API endpoint:", API); // add this temporarily
+
 
 const Login = ({ setUser }) => {
   const [email, setEmail] = useState("");
