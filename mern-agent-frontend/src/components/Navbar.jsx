@@ -11,7 +11,7 @@ const Navbar = ({ user, onLogout }) => {
   };
 
   return (
-    <nav className="fixed mt-5 w-[50rem] left-1/2 -translate-x-1/2 z-60 bg-black/50 text-white border border-gray-500 px-7 py-3 shadow flex justify-between items-center backdrop-blur-sm rounded-xl shadow-2xl shadow-violet-400 overflow-hidden">
+    <nav className="fixed mt-5 w-[20rem] md:w-[50rem] left-1/2 -translate-x-1/2 z-60 bg-black/50 text-white border border-gray-500 px-7 py-3 shadow flex justify-between items-center backdrop-blur-sm rounded-xl shadow-2xl shadow-violet-400 overflow-hidden">
       <Link to="/" className="montserrat-medium tracking-wider leading-relaxed text-xl font-bold text-white">Azyn</Link>
 
       <div className="flex gap-4 items-center">

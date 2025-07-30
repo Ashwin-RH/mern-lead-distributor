@@ -42,7 +42,7 @@ const Login = ({ setUser }) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-violet-300 via-pink-200 to-indigo-300 bg-[length:200%_100%] bg-[position:-50%_5]">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-violet-300 via-pink-200 to-indigo-300">
       <form
         className="bg-white px-9 py-8 rounded-3xl shadow-xl shadow-black/25 w-80"
         onSubmit={handleLogin}

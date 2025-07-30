@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { ClipboardCheck, HatGlasses } from "lucide-react";
+import { ClipboardCheck, HatGlasses, Trash2 } from "lucide-react";
 
 
 const API = import.meta.env.VITE_API_URL;
@@ -82,7 +82,7 @@ const Dashboard = () => {
       </h2>
 
       {user?.role === "admin" && (
-              <div className="flex items-center justify-center gap-30 mb-6 ">
+              <div className="flex items-center justify-center gap-3 md:gap-30 mb-6 ">
         <div className="bg-white w-[10rem] p-6 rounded-lg mt-10 mb-6 shadow-xl shadow-black/25 flex items-center justify-between z-50">
         <div className="flex flex-col items-center gap-2">
           <HatGlasses size={40} />
@@ -113,21 +113,21 @@ const Dashboard = () => {
     </div> */}
 
 
-      <div className="overflow-x-auto  mt-10 mb-20 mx-10 p-6 bg-white rounded-lg shadow-xl shadow-black/25">
-        <table className="w-full table-auto border border-gray-300 bg-gray-300/70 rounded-lg shadow">
-          <thead className="montserrat-medium bg-gray-100">
+      <div className="overflow-x-auto  mt-10 mb-20 mx-0 md:mx-10 p-3 md:p-6 bg-white rounded-lg shadow-xl shadow-black/25">
+        <table className="w-[15rem] md:w-full table-auto border border-gray-300 bg-gray-300/70 rounded-lg shadow">
+          <thead className="montserrat-medium text-sm md:text-lg bg-gray-100">
             <tr>
-              <th className="border border-gray-400 px-4 py-2">Name</th>
-              <th className="border border-gray-400 px-4 py-2">Phone</th>
-              <th className="border border-gray-400 px-4 py-2">Notes</th>
+              <th className="border border-gray-400 px-1 py-1 md:px-4 md:py-2">Name</th>
+              <th className="border border-gray-400 px-1 py-1 md:px-4 md:py-2">Phone</th>
+              <th className="border border-gray-400 px-1 py-1 md:px-4 md:py-2">Notes</th>
               {user?.role === "admin" && (
                 <>
-                  <th className="border border-gray-400 px-4 py-2">Assigned Agent</th>
-                  <th className="border border-gray-400 px-4 py-2">Actions</th>
+                  <th className="border border-gray-400 px-1 py-1 md:px-4 md:py-2">Assigned Agent</th>
+                  <th className="border border-gray-400 px-1 py-1 md:px-4 md:py-2">Actions</th>
                 </>
               )}
               {user?.role !== "admin" && (
-                <th className="border border-gray-400 px-4 py-2">Actions</th>
+                <th className="border border-gray-400 px-1 py-1 md:px-4 md:py-2">Actions</th>
               )}
             </tr>
           </thead>
@@ -136,16 +136,16 @@ const Dashboard = () => {
             {leads.map((lead) => {
               console.log("Lead:", lead);
               return (
-                <tr key={lead._id} className="montserrat-regular text-center text-gray-900">
-                  <td className="border border-gray-400 px-4 py-2">{lead.firstName}</td>
-                  <td className="border border-gray-400 px-4 py-2">{lead.mobile}</td>
-                  <td className="border border-gray-400 px-4 py-2">{lead.notes}</td>
+                <tr key={lead._id} className="montserrat-regular text-xs md:text-base  text-center text-gray-900">
+                  <td className="border border-gray-400 px-1 py-1 md:px-4 md:py-2">{lead.firstName}</td>
+                  <td className="border border-gray-400 px-1 py-1 md:px-4 md:py-2">{lead.mobile}</td>
+                  <td className="border border-gray-400 px-1 py-1 md:px-4 md:py-2">{lead.notes}</td>
                   {user?.role === "admin" && (
-                  <td className="border border-gray-400 px-4 py-2">
+                  <td className="border border-gray-400 px-1 py-1 md:px-4 md:py-2">
                     {lead.agent?.name || "—"}
                   </td>
                 )}
-                <td className="border border-gray-400 px-4 py-2">
+                <td className="border border-gray-400 px-1 py-1 md:px-4 md:py-2">
                   {user?.role === "admin" ? (
                     <button
                       onClick={() => {
@@ -155,9 +155,9 @@ const Dashboard = () => {
                           handleDelete(lead._id);
                         }
                       }}
-                      className="text-sm bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 cursor-pointer transition duration-200"
+                      className=" text-sm text-red-500 px-4 py-1 md:px-2 md:py-2 rounded-full hover:bg-white cursor-pointer transition duration-200"
                     >
-                      Delete
+                      <Trash2 size={20}/>
                     </button>
                   ) : (
                     "—"

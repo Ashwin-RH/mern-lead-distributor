@@ -37,7 +37,7 @@ const UploadLeads = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gradient-to-r from-violet-300 via-pink-200 to-indigo-300 ">
+    <div className="flex items-center justify-center h-screen bg-gradient-to-r from-violet-300 via-pink-200 to-indigo-300 p-6 ">
     <div className="max-w-md mx-auto mt-10 p-9 bg-white rounded-lg shadow-xl shadow-black/25">
       <h2 className="montserrat-semibold text-xl font-semibold mb-4">Upload CSV of Leads</h2>
       {msg && <p className="montserrat-regular text-[15px] text-green-600 mb-2">{msg}</p>}
