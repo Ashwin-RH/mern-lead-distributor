@@ -3,6 +3,9 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { ClipboardCheck, HatGlasses } from "lucide-react";
 
+
+const API = import.meta.env.VITE_API_URL;
+
 const Dashboard = () => {
   const [leads, setLeads] = useState([]);
   const [user, setUser] = useState({});
@@ -17,7 +20,7 @@ const Dashboard = () => {
 
   const fetchLeads = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/leads", {
+      const res = await axios.get(`${API}/api/leads`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -33,7 +36,7 @@ const Dashboard = () => {
 
   const fetchSummary = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/summary", {
+      const res = await axios.get(`${API}/api/summary`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -56,7 +59,7 @@ const Dashboard = () => {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/leads/${id}`, {
+      await axios.delete(`${API}/api/leads/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -79,8 +82,8 @@ const Dashboard = () => {
       </h2>
 
       {user?.role === "admin" && (
-              <div className="flex items-center justify-center gap-30 mb-6">
-        <div className="bg-white w-[10rem] p-6 rounded-lg mt-10 mb-6 shadow-xl shadow-black/25 flex items-center justify-between">
+              <div className="flex items-center justify-center gap-30 mb-6 ">
+        <div className="bg-white w-[10rem] p-6 rounded-lg mt-10 mb-6 shadow-xl shadow-black/25 flex items-center justify-between z-50">
         <div className="flex flex-col items-center gap-2">
           <HatGlasses size={40} />
           <h3 className="montserrat-medium text-md font-semibold text-gray-700">Agents</h3>
@@ -91,7 +94,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-        <div className="bg-white w-[10rem] p-6 rounded-lg mt-10 mb-6 shadow-xl shadow-black/25 flex items-center justify-between">
+        <div className="bg-white w-[10rem] p-6 rounded-lg mt-10 mb-6 shadow-xl shadow-black/25 flex items-center justify-between z-50">
           <div className="flex flex-col items-center gap-2">
             <ClipboardCheck size={40} />
             <h3 className="montserrat-medium text-md font-semibold text-gray-700">Leads</h3>

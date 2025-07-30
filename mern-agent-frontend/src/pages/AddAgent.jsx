@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+const API = import.meta.env.VITE_API_URL;
 
 const AddAgent = () => {
   const [formData, setFormData] = useState({
@@ -24,13 +25,13 @@ const handleSubmit = async (e) => {
   console.log("Submitting Agent:", formData); // 🔍 DEBUG HERE
 
   try {
-    const res = await axios.post("http://localhost:5000/api/agents", formData, {
+    const res = await axios.post(`${API}/api/agents`, formData, {
       headers: {
         "Content-Type": "application/json", // 👈 IMPORTANT
         Authorization: `Bearer ${token}`,
       },
     });
-
+      
     setMsg(res.data.msg);
     setError("");
     setFormData({ name: "", email: "", mobile: "", password: "", role: "agent" });

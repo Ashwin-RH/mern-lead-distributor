@@ -3,6 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Lock, User } from "lucide-react";
 
+const API = import.meta.env.VITE_API_URL;
+
 const Login = ({ setUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,7 +21,7 @@ const Login = ({ setUser }) => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
+      const res = await axios.post(`${API}/api/auth/login`, {
         email,
         password,
       });
@@ -38,7 +40,7 @@ const Login = ({ setUser }) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-violet-300 via-pink-200 to-indigo-300">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-violet-300 via-pink-200 to-indigo-300 bg-[length:200%_100%] bg-[position:-50%_5]">
       <form
         className="bg-white px-9 py-8 rounded-3xl shadow-xl shadow-black/25 w-80"
         onSubmit={handleLogin}
