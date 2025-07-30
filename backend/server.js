@@ -7,10 +7,19 @@ dotenv.config();
 const app = express();
 
 // ✅ CORS setup — allow frontend domain
+const allowedOrigins = [
+  'https://azyn.vercel.app',
+  'https://agenzly.vercel.app',
+  'https://mern-lead-distributor.vercel.app',
+  'https://vercel.com/ashwin-haragis-projects/mern-lead-distributor/Avi6Nor35ztKxCypbieRVFevraH6',
+  'http://localhost:5173',
+];
+
 app.use(cors({
-  origin: ["http://localhost:5173", "https://azyn.vercel.app"],
+  origin: allowedOrigins,
   credentials: true,
 }));
+
 
 app.use(express.json());
 
