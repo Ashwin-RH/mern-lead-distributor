@@ -43,8 +43,8 @@ const Login = ({ setUser }) => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-violet-300 via-pink-200 to-indigo-300">
-      <div className="absolute top-40 montserrat-semibold text-[40px] text-gray-800 text-center ">Azyn</div>
-      <p className="absolute top-57 montserrat-semibold text-[20px] text-center">Organize. Assign. Grow.</p>
+      <div className="absolute top-35 md:top-40 montserrat-semibold text-[37px] md:text-[40px] text-gray-800 text-center tracking-wide ">A<span className="text-[24px] montserrat-bold uppercase">zyn</span></div>
+      <p className="absolute top-50 md:top-57 montserrat-semibold text-[18px] md:text-[20px] text-center">Organize. Assign. Grow.</p>
       <form
         className="bg-white px-9 py-8 rounded-3xl shadow-xl shadow-black/25 w-80"
         onSubmit={handleLogin}
