@@ -4,26 +4,39 @@ const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-// @route   POST /api/auth/register
+// @route   POST /api/auth/register (ADMIN ONLY)
 router.post('/register', async (req, res) => {
-  const { name, email, password, mobile, role } = req.body;
+  const { name, email, password, mobile, role, secretKey } = req.body;
 
   try {
+    // ✅ Secret key required
+    if (secretKey !== process.env.ADMIN_SECRET_KEY) {
+      return res.status(403).json({ msg: 'Unauthorized registration attempt' });
+    }
+
+    // ✅ Ensure role is admin only
+    if (role !== 'admin') {
+      return res.status(403).json({ msg: 'Only admin registration allowed via this route' });
+    }
+
+    // ✅ Optional: only allow official emails
+    if (!email.endsWith('@yourcompany.com')) {
+      return res.status(400).json({ msg: 'Email must end with @yourcompany.com' });
+    }
+
     const existingUser = await User.findOne({ email });
     if (existingUser) return res.status(400).json({ msg: 'User already exists' });
-
-    console.log("Registering with password:", password); // log plain password
 
     const user = new User({
       name,
       email,
-      password, //plain password schema will hash it
+      password, // hashed by Mongoose pre-save
       mobile,
-      role
+      role,
     });
 
     await user.save();
-    console.log("User saved. Hashed password:", user.password); // log hashed version
+    console.log("✅ Admin saved:", user.email);
 
     res.status(201).json({ msg: 'Admin registered successfully' });
 
@@ -32,6 +45,7 @@ router.post('/register', async (req, res) => {
     res.status(500).send('Server error');
   }
 });
+
 
 
 // @route   POST /api/auth/login

@@ -114,30 +114,31 @@ const Dashboard = () => {
 
 
       <div className="overflow-x-auto  mt-10 mb-20 mx-0 md:mx-10 p-3 md:p-6 bg-white rounded-lg shadow-xl shadow-black/25">
-        <table className="w-[15rem] md:w-full table-auto border border-gray-300 bg-gray-300/70 rounded-lg shadow">
-          <thead className="montserrat-medium text-sm md:text-lg bg-gray-100">
+      <div className="overflow-hidden  border-2 border-gray-400 rounded-lg shadow-lg shadow-black/25">
+        <table className="w-[15rem] md:w-full table-auto bg-gray-300/70">
+          <thead className="montserrat-medium text-sm md:text-lg bg-gray-100 overflow-hidden">
             <tr>
-              <th className="border border-gray-400 px-1 py-1 md:px-4 md:py-2">Name</th>
-              <th className="border border-gray-400 px-1 py-1 md:px-4 md:py-2">Phone</th>
-              <th className="border border-gray-400 px-1 py-1 md:px-4 md:py-2">Notes</th>
+              <th className="border-b border-r border-gray-400 px-1 py-1 md:px-4 md:py-2">Name</th>
+              <th className="border-b border-gray-400 px-1 py-1 md:px-4 md:py-2">Phone</th>
+              <th className="border-b border-l border-gray-400 px-1 py-1 md:px-4 md:py-2">Notes</th>
               {user?.role === "admin" && (
                 <>
-                  <th className="border border-gray-400 px-1 py-1 md:px-4 md:py-2">Assigned Agent</th>
-                  <th className="border border-gray-400 px-1 py-1 md:px-4 md:py-2">Actions</th>
+                  <th className="border-b border-l border-r border-gray-400 px-1 py-1 md:px-4 md:py-2">Assigned Agent</th>
+                  <th className="rounded-tr-lg border-b border-gray-400 px-1 py-1 md:px-4 md:py-2">Actions</th>
                 </>
               )}
               {user?.role !== "admin" && (
-                <th className="border border-gray-400 px-1 py-1 md:px-4 md:py-2">Actions</th>
+                <th className="border-b border-gray-400 px-1 py-1 md:px-4 md:py-2">Actions</th>
               )}
             </tr>
           </thead>
 
           <tbody>
             {leads.map((lead) => {
-              console.log("Lead:", lead);
+              // console.log("Lead:", lead);
               return (
                 <tr key={lead._id} className="montserrat-regular text-xs md:text-base  text-center text-gray-900">
-                  <td className="border border-gray-400 px-1 py-1 md:px-4 md:py-2">{lead.firstName}</td>
+                  <td className="border-b border-gray-400 px-1 py-1 md:px-4 md:py-2">{lead.firstName}</td>
                   <td className="border border-gray-400 px-1 py-1 md:px-4 md:py-2">{lead.mobile}</td>
                   <td className="border border-gray-400 px-1 py-1 md:px-4 md:py-2">{lead.notes}</td>
                   {user?.role === "admin" && (
@@ -145,7 +146,7 @@ const Dashboard = () => {
                     {lead.agent?.name || "—"}
                   </td>
                 )}
-                <td className="border border-gray-400 px-1 py-1 md:px-4 md:py-2">
+                <td className="border-b border-gray-400 px-1 py-1 md:px-4 md:py-2">
                   {user?.role === "admin" ? (
                     <button
                       onClick={() => {
@@ -168,6 +169,7 @@ const Dashboard = () => {
           </tbody>
         </table>
       </div>
+    </div>
     </div>
   );
 };

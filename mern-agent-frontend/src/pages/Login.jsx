@@ -42,26 +42,28 @@ const Login = ({ setUser }) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-violet-300 via-pink-200 to-indigo-300">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-violet-300 via-pink-200 to-indigo-300">
+      <div className="absolute top-40 montserrat-semibold text-[40px] text-gray-800 text-center ">Azyn</div>
+      <p className="absolute top-57 montserrat-semibold text-[20px] text-center">Organize. Assign. Grow.</p>
       <form
         className="bg-white px-9 py-8 rounded-3xl shadow-xl shadow-black/25 w-80"
         onSubmit={handleLogin}
       >
         <h2 className="montserrat-semibold text-xl font-bold mb-8 text-center">Login</h2>
         {msg && <p className="text-right text-red-500 mb-2 text-sm">{msg}</p>}
-        <div className="flex items-center justify-center rounded-lg mb-4 p-2 gap-2 bg-gray-200">
+        <div className="flex items-center justify-center rounded-lg mb-4 p-2 gap-2 bg-gray-200 outline-2 outline-gray-300 focus-within:outline-gray-400/80 focus-within:shadow-md focus-within:shadow-violet-200 transition-all duration-300 ease-in-out">
           <User size={22} className="text-gray-700" />
           <input
             type="email"
             placeholder="Email here.."
-            className="montserrat-medium text-sm w-full placeholder:text-sm placeholder-gray-500/60 outline-none"
+            className="montserrat-medium text-sm w-full placeholder:text-sm placeholder-gray-500/60 outline-none "
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
-        
-        <div className="flex items-center justify-center rounded-lg mb-4 p-2 gap-2 bg-gray-200">
+
+        <div className="flex items-center justify-center rounded-lg mb-4 p-2 gap-2 bg-gray-200 outline-2 outline-gray-300 focus-within:outline-gray-400/80 focus-within:shadow-md focus-within:shadow-violet-200 transition-all duration-300 ease-in-out">
           <Lock size={22} className="text-gray-700" />
           <input
             type="password"
