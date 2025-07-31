@@ -114,7 +114,7 @@ const Dashboard = () => {
 
 
       <div className="overflow-x-auto  mt-10 mb-20 mx-0 md:mx-10 p-3 md:p-6 bg-white rounded-lg shadow-xl shadow-black/25">
-      <div className="overflow-hidden  border-2 border-gray-400 rounded-lg shadow-lg shadow-black/25">
+      <div className="overflow-x-auto  border-2 border-gray-400 rounded-lg shadow-lg shadow-black/25">
         <table className="w-[15rem] md:w-full table-auto bg-gray-300/70">
           <thead className="montserrat-medium text-sm md:text-lg bg-gray-100 overflow-hidden">
             <tr>
