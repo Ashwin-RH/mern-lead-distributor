@@ -43,7 +43,7 @@ const Navbar = ({ user, onLogout }) => {
       </div>
 
       {isOpen && (
-        <div className='md:hidden mt-2 bg-black/40 backdrop-blur-lg rounded-lg border border-gray-400 shadow-lg flex flex-col gap-3 p-4 z-50'>
+        <div className='md:hidden mt-2 bg-black/5 backdrop-blur-lg rounded-lg border border-gray-400 shadow-lg flex  flex-col gap-3 p-4 z-50'>
           {user.role === 'admin' && (
             <>
               <Link to='/add-agent' className='montserrat-regular hover:text-pink-200'>Add Agent</Link>
